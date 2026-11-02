@@ -1,0 +1,36 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>D-Mfinix Hub</title>
+<style>
+body{font-family:Arial;background:#111;color:#fff;padding:15px}
+h1{color:#00ff88}
+.card{background:#222;padding:20px;border-radius:15px}
+input{width:100%;padding:12px;margin:8px 0;border-radius:8px;border:none}
+button{width:100%;padding:15px;background:#00ff88;color:#000;font-weight:bold;border:none;border-radius:10px;font-size:18px}
+.res{background:#333;padding:15px;border-radius:10px;margin-top:15px}
+</style>
+</head>
+<body>
+<h1>D-MFINIX HUB</h1>
+<p>Maquina de Obra - Calcula na hora</p>
+<div class="card">
+Comp (m):<input id="c" type="number" value="4">
+Alt (m):<input id="a" type="number" value="3">
+Preco m2 MT:<input id="p" type="number" value="250">
+<button onclick="calc()">CALCULAR</button>
+<div id="r" class="res">Resultado aqui</div>
+</div>
+<script>
+function calc(){
+let c=document.getElementById('c').value;
+let a=document.getElementById('a').value;
+let p=document.getElementById('p').value;
+let area=c*a;
+document.getElementById('r').innerHTML="AREA: "+area+" m2<br>TOTAL: "+(area*p)+" MT";
+}
+</script>
+</body>
+</html>
