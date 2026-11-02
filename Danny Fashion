@@ -1,1 +1,78 @@
-<!DOCTYPE html><html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>D-MFINIX Fashion Market</title><style>body{margin:0;font-family:Arial;background:#080808;color:#fff;padding:8px}h1{color:#ff0055;text-align:center;margin:5px}.sub{color:#888;text-align:center;font-size:11px;margin-bottom:10px}.box{background:#151515;padding:12px;border-radius:14px;max-width:480px;margin:10px auto;border:1px solid #222}label{font-size:11px;color:#00ff88;font-weight:bold;display:block;margin-top:8px}input,select{width:100%;padding:11px;margin:4px 0;border-radius:8px;border:none;background:#222;color:#fff;box-sizing:border-box}button{background:#ff0055;color:#fff;border:none;padding:13px;border-radius:10px;font-weight:900;width:100%;margin-top:8px}.grid{display:grid;grid-template-columns:1fr 1fr;gap:8px;margin-top:12px}.card{background:#1e1e1e;border-radius:10px;padding:6px;text-align:center;border:1px solid #333}.card img{width:100%;height:110px;object-fit:cover;border-radius:8px;background:#222}.preco{color:#00ff88;font-weight:900;font-size:13px}.preco2{color:#aaa;font-size:10px}.zap{background:#25D366;color:#fff;padding:12px;border-radius:10px;display:block;text-align:center;font-weight:900;text-decoration:none;margin-top:10px}</style></head><body><h1>D-MFINIX FASHION</h1><div class="sub">Marketplace - Vende Todo Tipo de Roupa | RAND + METICAL | Tembisa/Maputo</div><div class="box"><h3 style="color:#00ff88;margin:0 0 8px">➕ CADASTRAR ROUPA PRA VENDER</h3><label>Nome da Roupa:</label><input id="nome" placeholder="Ex: Camiseta Preta Street"><label>Categoria:</label><select id="cat"><option value="camiseta">👕 Camiseta</option><option value="calca">👖 Calça</option><option value="vestido">👗 Vestido</option><option value="tenis">👟 Tênis/Sapato</option><option value="crianca">👶 Criança</option><option value="casaco">🧥 Casaco</option><option value="intima">🩲 Roupa Íntima</option></select><label>Preço em RAND (R):</label><input id="precoR" type="number" placeholder="Ex: 80"><label>Foto (link ou deixa vazio):</label><input id="foto" placeholder="Cole link da imagem"><button onclick="cadastrar()">✅ CADASTRAR E COLOCAR NA LOJA</button><div class="grid" id="lista"></div><a class="zap" href="https://wa.me/27655594282">📲 CONTATO DANNY: 065 559 4282</a></div><script>let produtos=JSON.parse(localStorage.getItem('fashion_roubas')||'[]');if(produtos.length==0){produtos=[{nome:"Camiseta Street Preta",cat:"camiseta",precoR:80,img:"https://via.placeholder.com/300?text=Camiseta"},{nome:"Calça Jeans",cat:"calca",precoR:150,img:"https://via.placeholder.com/300?text=Calca"},{nome:"Vestido Verão",cat:"vestido",precoR:120,img:"https://via.placeholder.com/300?text=Vestido"}];}function cadastrar(){let n=document.getElementById('nome').value.trim(),c=document.getElementById('cat').value,p=parseFloat(document.getElementById('precoR').value),f=document.getElementById('foto').value||'https://via.placeholder.com/300?text='+encodeURIComponent(n);if(!n||!p){alert('⚠️ Escreve nome e preço!');return;}produtos.unshift({nome:n,cat:c,precoR:p,img:f});localStorage.setItem('fashion_roubas',JSON.stringify(produtos));mostrar();document.getElementById('nome').value='';document.getElementById('precoR').value='';document.getElementById('foto').value='';alert('✅ Roupa cadastrada na loja!');}function mostrar(){let cambio=3.6;let html='';produtos.forEach(pr=>{let m=(pr.precoR*cambio).toFixed(0);html+=`<div class="card"><img src="${pr.img}"><div style="font-size:11px;margin:4px 0">${pr.nome}</div><div class="preco">R ${pr.precoR}</div><div class="preco2">${m} MZN</div><a href="https://wa.me/27655594282?text=Olá%20quero%20${encodeURIComponent(pr.nome)}%20R${pr.precoR}%20%28${m}%20MZN%29" style="background:#25D366;color:#fff;padding:6px;border-radius:6px;display:block;text-decoration:none;margin-top:5px;font-size:10px;font-weight:900">COMPRAR NO ZAP</a></div>`});document.getElementById('lista').innerHTML=html;}mostrar();</script></body></html>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DANNY FASHION SA & MOZ</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial;background:#f5f5f5}
+header{background:#000;color:#fff;padding:18px;text-align:center}
+.hero{background:linear-gradient(135deg,#000,#007749);color:#fff;padding:30px 15px;text-align:center}
+.btn{background:#ff0055;color:#fff;padding:12px 20px;border-radius:30px;text-decoration:none;font-weight:bold;display:inline-block;margin:5px}
+.btn-mz{background:#007749}
+.btn-w{background:#25D366;color:#fff;padding:6px 10px;border-radius:15px;text-decoration:none;font-size:11px;font-weight:bold;display:block;margin-top:5px}
+.cat{padding:12px;background:#fff;margin:15px 10px 0;border-left:5px solid #007749;font-weight:bold;display:flex;justify-content:space-between}
+.products{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px}
+.card{background:#fff;border-radius:10px;overflow:hidden;box-shadow:0 2px 5px rgba(0,0,0,0.1)}
+.card img{width:100%;height:150px;object-fit:cover}
+.info{padding:8px;text-align:center}
+.price{color:#007749;font-weight:bold}
+.price-mz{color:#ff0055;font-size:11px}
+footer{background:#000;color:#fff;text-align:center;padding:15px;font-size:11px;margin-top:10px}
+</style>
+</head>
+<body>
+<header>
+<h1>🇿🇦 DANNY FASHION 🇲🇿</h1>
+<p>PREMIUM • SA & MOÇAMBIQUE • +27 65 559 4282</p>
+</header>
+<div class="hero">
+<h2>LOJA OFICIAL SA & MOZ</h2>
+<p>Tembisa (SA) • Maputo (MZ) • Entrega 2 Países</p>
+<p>💰 Preço em Rand & Metical</p>
+<a class="btn" href="https://wa.me/27655594282">COMPRAR SA 🇿🇦</a>
+<a class="btn btn-mz" href="https://wa.me/27655594282">COMPRAR MOZ 🇲🇿</a>
+</div>
+
+<div class="cat"><span>🏃 FATO DE TREINO QUALIDADE</span><span>🇿🇦🇲🇿</span></div>
+<div class="products">
+<div class="card"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f"><div class="info"><h3>Fato Nike Premium</h3><div class="price">R899</div><div class="price-mz">5.200MT</div><a class="btn-w" href="https://wa.me/27655594282">WhatsApp</a></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461"><div class="info"><h3>Fato Adidas Original</h3><div class="price">R950</div><div class="price-mz">5.500MT</div><a class="btn-w" href="https://wa.me/27655594282">WhatsApp</a></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1552902875-9c0c6fe1c85a"><div class="info"><h3>Fato Puma Completo</h3><div class="price">R850</div><div class="price-mz">4.900MT</div><a class="btn-w" href="https://wa.me/27655594282">WhatsApp</a></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea"><div class="info"><h3>Fato Feminino</h3><div class="price">R799</div><div class="price-mz">4.600MT</div><a class="btn-w" href="https://wa.me/27655594282">WhatsApp</a></div></div>
+</div>
+
+<div class="cat"><span>👖 CALÇAS MODELOS QUALIDADE</span></div>
+<div class="products">
+<div class="card"><img src="https://images.unsplash.com/photo-1542272604-787c3835535d"><div class="info"><h3>Jeans Skinny</h3><div class="price">R450 / 2.600MT</div><a class="btn-w" href="https://wa.me/27655594282">WhatsApp</a></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec"><div class="info"><h3>Cargo Premium</h3><div class="price">R499 / 2.900MT</div><a class="btn-w" href="https://wa.me/27655594282">WhatsApp</a></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1"><div class="info"><h3>Legging Mulher</h3><div class="price">R299 / 1.700MT</div><a class="btn-w" href="https://wa.me/27655594282">WhatsApp</a></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1582418702059-97ebafb69d09"><div class="info"><h3>Social</h3><div class="price">R550 / 3.200MT</div><a class="btn-w" href="https://wa.me/27655594282">WhatsApp</a></div></div>
+</div>
+
+<div class="cat"><span>👚 TUDO MULHERES • 👔 HOMENS • 👶 CRIANÇAS</span></div>
+<div class="products">
+<div class="card"><img src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc"><div class="info"><h3>Vestido Longo</h3><div class="price">R450 / 2.600MT</div><a class="btn-w" href="https://wa.me/27655594282">WhatsApp</a></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab"><div class="info"><h3>T-Shirt Homem</h3><div class="price">R250 / 1.450MT</div><a class="btn-w" href="https://wa.me/27655594282">WhatsApp</a></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1503944583220-79d8926ad5e2"><div class="info"><h3>Roupa Bebê</h3><div class="price">R199 / 1.150MT</div><a class="btn-w" href="https://wa.me/27655594282">WhatsApp</a></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1518831959646-742c3a14ebf7"><div class="info"><h3>Conjunto Criança</h3><div class="price">R350 / 2.000MT</div><a class="btn-w" href="https://wa.me/27655594282">WhatsApp</a></div></div>
+</div>
+
+<div class="cat"><span>👟 SAPATOS ORIGINAL • ⌚ RELÓGIOS</span></div>
+<div class="products">
+<div class="card"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff"><div class="info"><h3>Nike Air Max</h3><div class="price">R1299 / 7.500MT</div><a class="btn-w" href="https://wa.me/27655594282">WhatsApp</a></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5"><div class="info"><h3>Adidas Original</h3><div class="price">R1199 / 6.900MT</div><a class="btn-w" href="https://wa.me/27655594282">WhatsApp</a></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49"><div class="info"><h3>Relógio Luxo</h3><div class="price">R799 / 4.600MT</div><a class="btn-w" href="https://wa.me/27655594282">WhatsApp</a></div></div>
+<div class="card"><img src="https://images.unsplash.com/photo-1548169874-53e85f753f1e"><div class="info"><h3>Smartwatch</h3><div class="price">R650 / 3.800MT</div><a class="btn-w" href="https://wa.me/27655594282">WhatsApp</a></div></div>
+</div>
+
+<footer>
+<p><b>🇿🇦 DANNY FASHION 🇲🇿 - SA & MOÇAMBIQUE</b></p>
+<p>Tembisa, SA • Maputo, Matola, Beira</p>
+<p>WhatsApp: +27 65 559 4282</p>
+<p>Entrega SA R50 | MOZ 300MT</p>
+<p style="color:#ffcc00;margin-top:5px">QUALIDADE PREMIUM • 2 PAÍSES</p>
+</footer>
+</body>
+</html>
