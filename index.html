@@ -1,1 +1,139 @@
-<!DOCTYPE html><html lang="pt"><head><meta charset="utf-8"><meta name="viewport" content="width=device-width, initial-scale=1"><title>Danny Painters - Rand & Metical</title><style>body{margin:0;font-family:Arial;background:#080808;color:#fff;padding:8px;text-align:center}h1{color:#00ff88;margin:5px}.sub{color:#888;font-size:11px;margin-bottom:8px}.box{background:#151515;padding:12px;border-radius:14px;max-width:450px;margin:8px auto;border:1px solid #222;text-align:left}.desc{background:#111;padding:10px;border-radius:10px;border-left:3px solid #00ff88;font-size:11px;color:#ccc;margin-bottom:10px}label{font-size:11px;color:#00ff88;margin-top:8px;display:block;font-weight:bold}input,select{width:100%;padding:10px;margin:4px 0 6px;border-radius:8px;border:none;background:#222;color:#fff;box-sizing:border-box}button{width:100%;padding:14px;background:#00ff88;color:#000;font-weight:900;border:none;border-radius:10px;font-size:14px;margin-top:8px}.resultado{background:#1e1e1e;padding:12px;border-radius:10px;margin-top:10px;border-left:3px solid #00ff88;font-size:12px;line-height:1.7;white-space:pre-line}.zap{background:#25D366;color:#fff;padding:14px;border-radius:10px;display:block;text-decoration:none;font-weight:900;text-align:center;margin-top:10px}.dual{display:grid;grid-template-columns:1fr 1fr;gap:6px}.dual div{background:#222;padding:8px;border-radius:8px;text-align:center}.dual b{color:#00ff88}</style></head><body><h1>D-MFINIX DUAL</h1><div class="sub">Danny Painters | Preço em RAND e METICAL</div><div class="box"><div class="desc"><b style="color:#00ff88">💱 RAND (ZAR) + METICAL (MZN):</b> Calcula em RAND para clientes de Tembisa e já mostra em METICAL para Maputo. 1 RAND = 3.6 MZN</div><label>📏 Comprimento (m):</label><input id="c" type="number" value="5"><label>📐 Altura/Largura (m):</label><input id="a" type="number" value="3"><label>🔢 Quantidade:</label><input id="q" type="number" value="1"><label>🏗️ TIPO DE TRABALHO:</label><select id="trab"><option value="35">🎨 Pintura Simples - R35/m2</option><option value="50">🎨 Pintura + Massa - R50/m2</option><option value="75">🎨 Pintura Completa - R75/m2</option><option value="55">🧱 Reboco - R55/m2</option><option value="65">🧱 Massa Corrida - R65/m2</option><option value="95">🏠 Piso Cerâmica - R95/m2</option><option value="110">🚿 Azulejo - R110/m2</option><option value="80">🏠 Forro PVC - R80/m2</option><option value="120">💧 Impermeabilização - R120/m2</option><option value="150">🧱 Muro / Alvenaria - R150/m2</option></select><label>💱 Câmbio: 1 RAND = ? METICAL:</label><input id="cambio" type="number" value="3.6" step="0.1"><div class="dual"><div><label>Material R/m2:</label><input id="mat" type="number" value="20"></div><div><label>Transporte R:</label><input id="trans" type="number" value="150"></div></div><button onclick="calcDual()">CALCULAR RAND + METICAL</button><div id="r" class="resultado">Resultado em RAND e METICAL aparece aqui...</div><a id="z" class="zap" href="https://wa.me/27655594282">📲 ENVIAR ORÇAMENTO: 065 559 4282</a></div><script>function calcDual(){let c=parseFloat(document.getElementById('c').value)||0,a=parseFloat(document.getElementById('a').value)||0,q=parseFloat(document.getElementById('q').value)||1,trab=parseFloat(document.getElementById('trab').value)||35,mat=parseFloat(document.getElementById('mat').value)||0,trans=parseFloat(document.getElementById('trans').value)||0,cambio=parseFloat(document.getElementById('cambio').value)||3.6;let area=c*a*q;let mao=area*trab;let matT=area*mat;let totalR=mao+matT+trans;let totalM=totalR*cambio;let nome=document.getElementById('trab').options[document.getElementById('trab').selectedIndex].text;let txt=`✅ ORÇAMENTO DANNY PAINTERS\n\n🏗️ ${nome}\n📐 ÁREA: ${area.toFixed(2)} m²\n\n💰 EM RAND (África do Sul):\n• Serviço: R ${mao.toLocaleString()}\n• Material: R ${matT.toLocaleString()}\n• Transporte: R ${trans}\n• TOTAL: R ${totalR.toLocaleString()}\n\n💵 EM METICAL (Moçambique):\n• Taxa: 1 RAND = ${cambio} MZN\n• TOTAL: ${totalM.toLocaleString()} MZN\n\n📋 Válido 7 dias - Tembisa/Maputo`;document.getElementById('r').innerText=txt;let msg=encodeURIComponent(`Olá Danny! Orçamento ${nome}\nÁrea: ${area}m²\nRAND: R ${totalR} | METICAL: ${totalM} MZN\nVi no site D-MFINIX DUAL`);document.getElementById('z').href=`https://wa.me/27655594282?text=${msg}`;}</script></body></html>
+<!DOCTYPE html>
+<html lang="pt">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>DANNY FASHION - Catalogos</title>
+<style>
+*{margin:0;padding:0;box-sizing:border-box}
+body{font-family:Arial;background:#f4f4f4}
+header{background:#000;color:#fff;padding:14px;text-align:center;position:sticky;top:0;z-index:100}
+header h1{color:#ff0040}
+.search-box{background:#111;padding:12px;position:sticky;top:60px;z-index:99;display:flex;gap:8px}
+.search-box input{flex:1;padding:12px 15px;border-radius:25px;border:none}
+.search-box button{padding:12px 18px;border-radius:25px;border:none;background:#ff0040;color:#fff;font-weight:bold}
+.filters{background:#fff;padding:10px;display:flex;gap:8px;overflow-x:auto;position:sticky;top:110px;z-index:98;border-bottom:1px solid #ddd}
+.filters button{padding:8px 14px;border-radius:20px;border:1px solid #ddd;background:#fff;font-size:12px}
+.filters button.active{background:#000;color:#fff}
+.hero{background:linear-gradient(135deg,#000,#007749);color:#fff;padding:20px;text-align:center}
+.cat{background:#fff;margin:14px 10px 0;padding:10px;border-left:6px solid #ff0040;font-weight:bold;display:flex;justify-content:space-between}
+.products{display:grid;grid-template-columns:1fr 1fr;gap:10px;padding:10px}
+.card{background:#fff;border-radius:12px;overflow:hidden;box-shadow:0 2px 8px rgba(0,0,0,.1)}
+.card img{width:100%;height:160px;object-fit:cover}
+.info{padding:8px;text-align:center}
+.info h3{font-size:11px;height:26px;overflow:hidden}
+.price{color:#007749;font-weight:bold;font-size:13px}
+.price-mz{color:#ff0040;font-size:10px}
+.btn-w{display:block;background:#25D366;color:#fff;padding:6px;border-radius:20px;text-decoration:none;font-size:11px;font-weight:bold;margin-top:5px}
+.hidden{display:none!important}
+footer{background:#000;color:#fff;text-align:center;padding:20px;font-size:11px;margin-top:20px}
+</style>
+</head>
+<body>
+<header>
+<h1>🇿🇦 DANNY FASHION 🇲🇿</h1>
+<p>LOJA OFICIAL +27 65 559 4282</p>
+</header>
+<div class="search-box">
+<input id="searchInput" type="text" placeholder="🔍 Pesquisar: Nike, vestido, calça, sapato, relógio...">
+<button onclick="pesquisar()">Buscar</button>
+</div>
+<div class="filters">
+<button class="active" onclick="filtrar('todos',this)">Todos</button>
+<button onclick="filtrar('fato',this)">🔥 Fato Treino</button>
+<button onclick="filtrar('calca',this)">👖 Calças Modelos</button>
+<button onclick="filtrar('sapato',this)">👟 Sapatos Qualidade</button>
+<button onclick="filtrar('relogio',this)">⌚ Relógios</button>
+<button onclick="filtrar('mulher',this)">👗 Mulheres</button>
+<button onclick="filtrar('homem',this)">👕 Homens</button>
+<button onclick="filtrar('crianca',this)">👶 Crianças</button>
+</div>
+<div class="hero">
+<h3>SUPORTE QUALIDADE DE MODELOS - SA & MOZ</h3>
+<p>Tembisa SA - Maputo MZ - Digite o que procura em cima</p>
+</div>
+<div id="catalogo">
+<div class="cat" data-cat="fato">🔥 FATO DE TREINO COM QUALIDADE</div>
+<div class="products">
+<div class="card" data-nome="fato nike tech treino"><img src="https://images.unsplash.com/photo-1515886657613-9f3515b0c78f"><div class="info"><h3>Fato Nike Tech Treino</h3><div class="price">R899</div><div class="price-mz">5.200MT</div><a class="btn-w" href="https://wa.me/27655594282?text=Quero%20Fato%20Nike">Pedir +27655594282</a></div></div>
+<div class="card" data-nome="fato adidas original treino"><img src="https://images.unsplash.com/photo-1578683010236-d716f9a3f461"><div class="info"><h3>Fato Adidas Original</h3><div class="price">R950</div><div class="price-mz">5.500MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div>
+<div class="card" data-nome="fato puma completo treino"><img src="https://images.unsplash.com/photo-1552902875-9c0c6fe1c85a"><div class="info"><h3>Fato Puma Completo</h3><div class="price">R850</div><div class="price-mz">4.900MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div>
+<div class="card" data-nome="fato treino feminino"><img src="https://images.unsplash.com/photo-1591047139829-d91aecb6caea"><div class="info"><h3>Fato Treino Feminino</h3><div class="price">R799</div><div class="price-mz">4.600MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div>
+</div>
+<div class="cat" data-cat="calca">👖 CALÇAS DE QUALIDADE E MODELOS</div>
+<div class="products">
+<div class="card" data-nome="calca jeans skinny qualidade"><img src="https://images.unsplash.com/photo-1542272604-787c3835535d"><div class="info"><h3>Calça Jeans Skinny Qualidade</h3><div class="price">R450 | 2.600MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div>
+<div class="card" data-nome="calca cargo militar modelo"><img src="https://images.unsplash.com/photo-1584370848010-d7fe6bc767ec"><div class="info"><h3>Calça Cargo Militar Modelo</h3><div class="price">R499 | 2.900MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div>
+<div class="card" data-nome="calca legging mulher"><img src="https://images.unsplash.com/photo-1594633312681-425c7b97ccd1"><div class="info"><h3>Calça Legging Mulher</h3><div class="price">R299 | 1.700MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div>
+<div class="card" data-nome="calca jeans mom qualidade"><img src="https://images.unsplash.com/photo-1541099649105-f69ad21f3246"><div class="info"><h3>Calça Jeans Mom Premium</h3><div class="price">R479 | 2.750MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div>
+<div class="card" data-nome="calca social slim homem"><img src="https://images.unsplash.com/photo-1582418702059-97ebafb69d09"><div class="info"><h3>Calça Social Slim Homem</h3><div class="price">R550 | 3.200MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div>
+<div class="card" data-nome="calca moletom qualidade"><img src="https://images.unsplash.com/photo-1552902875-9c0c6fe1c85a"><div class="info"><h3>Calça Moletom Qualidade</h3><div class="price">R350 | 2.000MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div>
+</div>
+<div class="cat" data-cat="mulher">👗 ROUPA MULHERES</div>
+<div class="products">
+<div class="card" data-nome="vestido longo elegante mulher"><img src="https://images.unsplash.com/photo-1485230895905-ec40ba36b9bc"><div class="info"><h3>Vestido Longo Elegante Mulher</h3><div class="price">R450 | 2.600MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div>
+<div class="card" data-nome="saia midi mulher"><img src="https://images.unsplash.com/photo-1583496661160-fb5886a0aaaa"><div class="info"><h3>Saia Midi Modelo Mulher</h3><div class="price">R299 | 1.700MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div>
+<div class="card" data-nome="blusa cropped mulher"><img src="https://images.unsplash.com/photo-1554568218-0f1715e72254"><div class="info"><h3>Blusa Cropped Mulher</h3><div class="price">R199 | 1.150MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div>
+<div class="card" data-nome="conjunto saia blusa mulher"><img src="https://images.unsplash.com/photo-1539008835657-9e8e9680c956"><div class="info"><h3>Conjunto Saia e Blusa</h3><div class="price">R599 | 3.400MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div>
+</div>
+<div class="cat" data-cat="homem">👕 ROUPA HOMENS</div>
+<div class="products">
+<div class="card" data-nome="camiseta premium homem"><img src="https://images.unsplash.com/photo-1521572163474-6864f9cf17ab"><div class="info"><h3>Camiseta Premium Homem</h3><div class="price">R250 | 1.450MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div>
+<div class="card" data-nome="camisa social homem"><img src="https://images.unsplash.com/photo-1596755094514-f87e34085b2c"><div class="info"><h3>Camisa Social Homem</h3><div class="price">R399 | 2.300MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div>
+</div>
+<div class="cat" data-cat="crianca">👶 CRIANÇAS</div>
+<div class="products">
+<div class="card" data-nome="roupa bebe kit crianca"><img src="https://images.unsplash.com/photo-1503944583220-79d8926ad5e2"><div class="info"><h3>Roupa Bebê Kit 3 Peças</h3><div class="price">R199 | 1.150MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div>
+<div class="card" data-nome="conjunto crianca 2-8 anos"><img src="https://images.unsplash.com/photo-1518831959646-742c3a14ebf7"><div class="info"><h3>Conjunto Criança 2-8 Anos</h3><div class="price">R350 | 2.000MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div>
+</div>
+<div class="cat" data-cat="sapato">👟 SAPATOS DE QUALIDADE</div>
+<div class="products">
+<div class="card" data-nome="sapato nike air max original qualidade"><img src="https://images.unsplash.com/photo-1542291026-7eec264c27ff"><div class="info"><h3>Nike Air Max Original Qualidade</h3><div class="price">R1.299 | 7.500MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div>
+<div class="card" data-nome="sapato adidas runner premium"><img src="https://images.unsplash.com/photo-1608231387042-66d1773070a5"><div class="info"><h3>Adidas Runner Premium</h3><div class="price">R1.199 | 6.900MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div>
+<div class="card" data-nome="sapato casual unissex qualidade"><img src="https://images.unsplash.com/photo-1549298916-b41d501d3772"><div class="info"><h3>Tênis Casual Unissex Qualidade</h3><div class="price">R899 | 5.200MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div>
+<div class="card" data-nome="sapato social couro"><img src="https://images.unsplash.com/photo-1603808033192-082d6919d3e1"><div class="info"><h3>Sapato Social Couro</h3><div class="price">R999 | 5.800MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div>
+</div>
+<div class="cat" data-cat="relogio">⌚ RELÓGIOS QUALIDADE</div>
+<div class="products">
+<div class="card" data-nome="relogio luxo masculino qualidade"><img src="https://images.unsplash.com/photo-1523170335258-f5ed11844a49"><div class="info"><h3>Relógio Luxo Masculino</h3><div class="price">R799 | 4.600MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div>
+<div class="card" data-nome="smartwatch original relogio"><img src="https://images.unsplash.com/photo-1548169874-53e85f753f1e"><div class="info"><h3>Smartwatch Original</h3><div class="price">R650 | 3.800MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div>
+<div class="card" data-nome="relogio feminino dourado"><img src="https://images.unsplash.com/photo-1524805444973-bf35cfea2c22"><div class="info"><h3>Relógio Feminino Dourado</h3><div class="price">R599 | 3.400MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div>
+<div class="card" data-nome="relogio esportivo qualidade"><img src="https://images.unsplash.com/photo-1508685096489-7aacd43bd3b5"><div class="info"><h3>Relógio Esportivo</h3><div class="price">R499 | 2.900MT</div><a class="btn-w" href="https://wa.me/27655594282">Pedir</a></div></div>
+</div>
+</div>
+<footer>
+<p><b>DANNY FASHION SA & MOZ - CATALOGOS</b></p>
+<p>WhatsApp +27 65 559 4282 - Tembisa SA | Maputo MZ</p>
+</footer>
+<script>
+function filtrar(cat,btn){
+ document.querySelectorAll('.filters button').forEach(b=>b.classList.remove('active'));
+ btn.classList.add('active');
+ document.querySelectorAll('.cat').forEach(c=>{
+   if(cat==='todos'){c.style.display='flex';c.nextElementSibling.style.display='grid';}
+   else{
+     if(c.dataset.cat===cat){c.style.display='flex';c.nextElementSibling.style.display='grid';}
+     else{c.style.display='none';c.nextElementSibling.style.display='none';}
+   }
+ });
+ document.querySelectorAll('.card').forEach(card=>card.classList.remove('hidden'));
+ document.getElementById('searchInput').value='';
+}
+function pesquisar(){
+ let termo=document.getElementById('searchInput').value.toLowerCase();
+ if(!termo){filtrar('todos',document.querySelector('.filters button'));return;}
+ document.querySelectorAll('.cat').forEach(c=>{c.style.display='flex';c.nextElementSibling.style.display='grid';});
+ document.querySelectorAll('.card').forEach(card=>{
+   let nome=card.dataset.nome;
+   if(nome.includes(termo)){card.classList.remove('hidden');}
+   else{card.classList.add('hidden');}
+ });
+ document.querySelectorAll('.cat').forEach(c=>{
+   let produtos=c.nextElementSibling.querySelectorAll('.card:not(.hidden)').length;
+   if(produtos===0){c.style.display='none';}
+ });
+}
+document.getElementById('searchInput').addEventListener('input',pesquisar);
+</script>
+</body>
+</html>
